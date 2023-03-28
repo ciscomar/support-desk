@@ -4,6 +4,10 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Header } from './components/Header';
 import { ToastContainer } from 'react-toastify'
+import NewTicket from './pages/NewTicket'
+import PrivateRoute from './components/PrivateRoute';
+import Tickets from './pages/Tickets';
+import Ticket from './pages/Ticket';
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
@@ -16,7 +20,30 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-
+            <Route
+              path='/new-ticket'
+              element={
+                <PrivateRoute>
+                  <NewTicket />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path='/tickets'
+              element={
+                <PrivateRoute>
+                  <Tickets />
+                </PrivateRoute>
+              }
+            />
+          <Route
+              path='/ticket/:ticketId'
+              element={
+                <PrivateRoute>
+                  <Ticket />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
       </Router>
